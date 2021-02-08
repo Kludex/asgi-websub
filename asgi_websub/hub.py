@@ -7,3 +7,7 @@ when requested. Hubs MUST deliver the full contents of the topic URL in the requ
 MAY reduce the payload to a diff if the content type supports it. The conformance
 criteria are described in Conformance Classes above.
 """
+
+
+class Hub:
+    ...

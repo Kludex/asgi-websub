@@ -6,7 +6,6 @@ distribution requests from the hub. The subscriber MAY support
 The conformance criteria are described in
 [Conformance Classes](https://www.w3.org/TR/websub/#conformance-classes) above.
 """
-import httpx
 
 
 class Subscriber:
