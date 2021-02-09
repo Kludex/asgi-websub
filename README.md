@@ -36,8 +36,8 @@ For the purposes of evaluating exit criteria, each of the following is considere
 - [X] Discovering the hub and topic URLs by looking at the HTTP headers of the resource URL.
 - [X] Discovering the hub and topic URLs by looking at the contents of the resource URL as an XML document.
 - [X] Discovering the hub and topic URLs by looking at the contents of the resource URL as an HTML document.
-- [ ] Subscribing to the hub with a callback URL.
-- [ ] Subscribing to the hub and requesting a specific lease duration.
+- [X] Subscribing to the hub with a callback URL.
+- [X] Subscribing to the hub and requesting a specific lease duration.
 - [ ] Subscribing to the hub with a secret and handling authenticated content distribution.
 - [ ] Requesting that a subscription is deactivated by sending an unsubscribe request.
 - [ ] The Subscriber acknowledges a pending subscription on a validation request.
