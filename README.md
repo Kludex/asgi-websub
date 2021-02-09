@@ -15,6 +15,12 @@
     <img src="https://img.shields.io/github/license/Kludex/asgi-websub">
 </p>
 
+This project implements WebSub for ASGI applications.
+
+Code inspiration:
+- https://github.com/ShadowJonathan/pywebsub/
+- https://github.com/encode/starlette/
+- https://github.com/django/asgiref/blob/master/asgiref/typing.py
 
 ## Installation
 
