@@ -52,6 +52,10 @@ For the purposes of evaluating exit criteria, each of the following is considere
 - [ ] The Hub sends a diff of the topic URL for the formats that support it.
 - [ ] The Hub sends a valid signature for subscriptions that were made with a secret.
 
+## Resources
+
+- https://documentation.superfeedr.com/
+- https://websub.rocks/
 
 ## License
 
