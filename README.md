@@ -39,7 +39,7 @@ For the purposes of evaluating exit criteria, each of the following is considere
 - [X] Subscribing to the hub with a callback URL.
 - [X] Subscribing to the hub and requesting a specific lease duration.
 - [ ] Subscribing to the hub with a secret and handling authenticated content distribution.
-- [ ] Requesting that a subscription is deactivated by sending an unsubscribe request.
+- [X] Requesting that a subscription is deactivated by sending an unsubscribe request.
 - [ ] The Subscriber acknowledges a pending subscription on a validation request.
 - [ ] The Subscriber rejects a subscription validation request for an invalid topic URL.
 - [ ] The Subscriber returns an HTTP 2xx response when the payload is delivered.

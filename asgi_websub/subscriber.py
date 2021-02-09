@@ -9,7 +9,7 @@ The conformance criteria are described in
 Reference: https://www.w3.org/TR/websub/#subscriber
 """
 import asyncio
-from typing import Any, Dict
+from typing import Any, Dict, Literal
 
 import httpx
 
@@ -42,13 +42,13 @@ class Subscriber:
             raise HubNotFoundException(f"HTTP Exception for {exc.request.url}") from exc
         urls = discover_urls(res)
         self.topic_url = urls["topic"]
-        self.hub_urls = urls["hub"]
         return urls
 
-    async def subscribe(
+    async def subscription_request(
         self,
         hub_url: str,
         callback_url: str,
+        mode: Literal["subscribe", "unsubscribe"],
         *,
         topic_url: str = None,
         lease_seconds: int = None,
@@ -76,7 +76,7 @@ class Subscriber:
                     hub_url,
                     data={
                         "hub.callback": callback_url,
-                        "hub.mode": "subscribe",
+                        "hub.mode": mode,
                         "hub.topic": self.topic_url,
                         **optional_data,
                     },
@@ -98,8 +98,49 @@ class Subscriber:
         except httpx.HTTPError as exc:
             raise HubNotFoundException(f"HTTP Exception for {exc.request.url}") from exc
 
-    async def unsubscribe(self):
-        ...
+    async def subscribe(
+        self,
+        hub_url: str,
+        callback_url: str,
+        *,
+        topic_url: str = None,
+        lease_seconds: int = None,
+        secret: str = None,
+        params: Dict[str, Any] = None,
+        headers: Dict[str, str] = None,
+    ):
+        self.subscription_request(
+            hub_url=hub_url,
+            callback_url=callback_url,
+            mode="subscribe",
+            topic_url=topic_url,
+            lease_seconds=lease_seconds,
+            secret=secret,
+            params=params,
+            headers=headers,
+        )
+
+    async def unsubscribe(
+        self,
+        hub_url: str,
+        callback_url: str,
+        *,
+        topic_url: str = None,
+        lease_seconds: int = None,
+        secret: str = None,
+        params: Dict[str, Any] = None,
+        headers: Dict[str, str] = None,
+    ):
+        self.subscription_request(
+            hub_url=hub_url,
+            callback_url=callback_url,
+            mode="unsubscribe",
+            topic_url=topic_url,
+            lease_seconds=lease_seconds,
+            secret=secret,
+            params=params,
+            headers=headers,
+        )
 
 
 async def main():
