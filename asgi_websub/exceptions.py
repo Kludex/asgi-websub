@@ -1,0 +1,6 @@
+class ASGIWebSubException(Exception):
+    ...
+
+
+class HubNotFoundException(ASGIWebSubException):
+    ...
