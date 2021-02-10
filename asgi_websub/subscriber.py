@@ -18,12 +18,12 @@ from asgi_websub.exceptions import (
     SubscriptionException,
     TopicNotFoundException,
 )
-from asgi_websub.types import ASGIApp, DiscoverHeaders
+from asgi_websub.types import DiscoverHeaders
 from asgi_websub.utils import discover_urls
 
 
 class Subscriber:
-    def __init__(self, app: ASGIApp) -> None:
+    def __init__(self) -> None:
         self.topic_url = None
 
     async def discover(self, resource_url: str, headers: DiscoverHeaders = None):
@@ -109,7 +109,7 @@ class Subscriber:
         params: Dict[str, Any] = None,
         headers: Dict[str, str] = None,
     ):
-        self.subscription_request(
+        await self.subscription_request(
             hub_url=hub_url,
             callback_url=callback_url,
             mode="subscribe",
@@ -131,7 +131,7 @@ class Subscriber:
         params: Dict[str, Any] = None,
         headers: Dict[str, str] = None,
     ):
-        self.subscription_request(
+        await self.subscription_request(
             hub_url=hub_url,
             callback_url=callback_url,
             mode="unsubscribe",
@@ -152,7 +152,6 @@ async def main():
         callback_url="https://8371f0fade04.ngrok.io",
         topic_url=topic_url,
     )
-    print(urls)
 
 
 if __name__ == "__main__":
